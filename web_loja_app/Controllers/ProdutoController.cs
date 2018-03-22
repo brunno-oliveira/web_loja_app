@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using web_loja_app.Models;
 
+
 namespace web_loja_app.Controllers
 {
     public class ProdutoController : Controller
@@ -12,7 +13,12 @@ namespace web_loja_app.Controllers
         // GET: Produto
         public ActionResult Produto()
         {
-            return View();
+            using (var ctx = new web_loja_dal.Model())
+            {
+                List<web_loja_dal.PRODUTO> prod = (from d in ctx.PRODUTO select d).ToList<web_loja_dal.PRODUTO>();
+                Console.WriteLine(prod);
+            }            
+                return View();
         }
 
         // GET
@@ -40,8 +46,7 @@ namespace web_loja_app.Controllers
             } catch
             {
                 return View();
-            }
-            
-        }
+            }            
+        }        
     }
 }

@@ -12,7 +12,7 @@ namespace web_loja_dal
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PRODUTO()
         {
-            ITEM_VENDA = new HashSet<ITEM_VENDA>();
+            CESTA_ITEM = new HashSet<CESTA_ITEM>();
         }
 
         public int ID { get; set; }
@@ -24,12 +24,18 @@ namespace web_loja_dal
         [StringLength(250)]
         public string MARCA { get; set; }
 
-        [Column(TypeName = "money")]
-        public decimal VALOR { get; set; }
+        [Column(TypeName = "numeric")]
+        public decimal? VALOR { get; set; }
 
         public int QUANTIDADE { get; set; }
 
+        public byte? ATIVO { get; set; }
+
+        public DateTime DATA_CRIACAO { get; set; }
+
+        public DateTime? DATA_ATUALIZACAO { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ITEM_VENDA> ITEM_VENDA { get; set; }
+        public virtual ICollection<CESTA_ITEM> CESTA_ITEM { get; set; }
     }
 }

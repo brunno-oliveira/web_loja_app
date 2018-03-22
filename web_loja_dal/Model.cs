@@ -5,20 +5,28 @@ namespace web_loja_dal
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class EstoqueModel : DbContext
+    public partial class Model : DbContext
     {
-        public EstoqueModel()
-            : base("name=estoque")
+        public Model()
+            : base("name=connEstoque")
         {
         }
 
+        public virtual DbSet<CESTA> CESTA { get; set; }
+        public virtual DbSet<CESTA_ITEM> CESTA_ITEM { get; set; }
         public virtual DbSet<CLIENTE> CLIENTE { get; set; }
-        public virtual DbSet<ITEM_VENDA> ITEM_VENDA { get; set; }
         public virtual DbSet<PRODUTO> PRODUTO { get; set; }
         public virtual DbSet<VENDA> VENDA { get; set; }
+        public virtual DbSet<VENDA_ITEM> VENDA_ITEM { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<CESTA>()
+                .HasMany(e => e.CESTA_ITEM)
+                .WithRequired(e => e.CESTA)
+                .HasForeignKey(e => e.ID_CESTA)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<CLIENTE>()
                 .Property(e => e.NOME)
                 .IsUnicode(false);
@@ -30,6 +38,21 @@ namespace web_loja_dal
             modelBuilder.Entity<CLIENTE>()
                 .Property(e => e.CPF)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<CLIENTE>()
+                .Property(e => e.SEXO)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CLIENTE>()
+                .Property(e => e.TELEFONE)
+                .HasPrecision(25, 0);
+
+            modelBuilder.Entity<CLIENTE>()
+                .HasMany(e => e.CESTA)
+                .WithRequired(e => e.CLIENTE)
+                .HasForeignKey(e => e.ID_CLIENTE)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CLIENTE>()
                 .HasMany(e => e.VENDA)
@@ -46,20 +69,24 @@ namespace web_loja_dal
                 .IsUnicode(false);
 
             modelBuilder.Entity<PRODUTO>()
-                .Property(e => e.VALOR)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<PRODUTO>()
-                .HasMany(e => e.ITEM_VENDA)
+                .HasMany(e => e.CESTA_ITEM)
                 .WithRequired(e => e.PRODUTO)
                 .HasForeignKey(e => e.ID_PRODUTO)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<VENDA>()
-                .HasMany(e => e.ITEM_VENDA)
+                .HasMany(e => e.VENDA_ITEM)
                 .WithRequired(e => e.VENDA)
                 .HasForeignKey(e => e.ID_VENDA)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<VENDA_ITEM>()
+                .Property(e => e.NOME)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VENDA_ITEM>()
+                .Property(e => e.MARCA)
+                .IsUnicode(false);
         }
     }
 }

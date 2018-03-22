@@ -6,13 +6,13 @@ namespace web_loja_dal
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("VENDA")]
-    public partial class VENDA
+    [Table("CESTA")]
+    public partial class CESTA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public VENDA()
+        public CESTA()
         {
-            VENDA_ITEM = new HashSet<VENDA_ITEM>();
+            CESTA_ITEM = new HashSet<CESTA_ITEM>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -23,14 +23,16 @@ namespace web_loja_dal
         [Column(TypeName = "numeric")]
         public decimal? TOTAL { get; set; }
 
+        [Column(TypeName = "numeric")]
+        public decimal? TOTAL_COM_DESCONTO { get; set; }
+
         public DateTime DATA_CRIACAO { get; set; }
 
-        [Column(TypeName = "numeric")]
-        public decimal? TOTAL_DESCONTO { get; set; }
+        public DateTime? DATA_ATUALIZACAO { get; set; }
 
         public virtual CLIENTE CLIENTE { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VENDA_ITEM> VENDA_ITEM { get; set; }
+        public virtual ICollection<CESTA_ITEM> CESTA_ITEM { get; set; }
     }
 }

@@ -12,5 +12,6 @@ namespace web_loja_app.Models
         public string marca { get; set; }
         public double valor { get; set; }
         public int quantidade { get; set; }
+        public bool ativo { get; set; }
     }
 }

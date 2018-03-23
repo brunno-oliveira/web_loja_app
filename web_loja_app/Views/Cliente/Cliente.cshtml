@@ -1,4 +1,5 @@
-﻿
+﻿@model web_loja_app.Models.Cliente
+
 @{
     ViewBag.Title = "Cliente";
 }
@@ -7,15 +8,23 @@
     <h2>Cadastro de Cliente</h2>
     <p>
         <label for="nome">Nome: </label><br>
-        <input type="text" name="nome" required>
+        @Html.TextBoxFor(m => m.nome, new { @class = "form-control" })
     </p>
     <p>
         <label for="email">E-mail: </label><br>
-        <input type="email" name="email" required>
+        @Html.TextBoxFor(m => m.email, new { @class = "form-control" })
     </p>
     <p>
         <label for="cpf">CPF: </label><br>
-        <input type="text" name="cpf" required>
+        @Html.TextBoxFor(m => m.cpf, new { @class = "form-control" })
+    </p>
+    <p>
+        <label for="sexo">Sexo: </label>
+        @Html.CheckBoxFor(m => m.sexo, new { @class = "form-check-input" })
+    </p>
+    <p>
+        <label for="telefone">Telefone: </label><br>
+        @Html.TextBoxFor(m => m.telefone, new { @class = "form-control" })
     </p>
     <button type="submit" name="cadastrar" class="btn btn-success">Cadastrar!</button>
 </form>

@@ -220,6 +220,9 @@
     <Content Include="Views\Cliente\Cliente.cshtml" />
     <Content Include="Views\Produto\Produto.cshtml" />
     <Content Include="Views\Venda\Venda.cshtml" />
+    <Content Include="Views\Produto\DetailProduto.cshtml" />
+    <Content Include="Views\Cliente\ClienteDetail.cshtml" />
+    <Content Include="Views\Cesta\DetailCesta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

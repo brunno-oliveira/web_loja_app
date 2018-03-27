@@ -15,16 +15,26 @@ namespace web_loja_app.Controllers
         {
             using (var ctx = new web_loja_dal.Model())
             {
-                List<web_loja_dal.PRODUTO> prod = (from d in ctx.PRODUTO select d).ToList<web_loja_dal.PRODUTO>();
-                Console.WriteLine(prod);
+                List<web_loja_dal.PRODUTO> listProd = (from d in ctx.PRODUTO select d).ToList<web_loja_dal.PRODUTO>();
+                Console.WriteLine(listProd);
             }            
                 return View();
         }
 
         // GET
-        public ActionResult Details(int id)
+        public ActionResult ProdutoDetail(int id)
         {
-            return View();
+            using (var ctx = new web_loja_dal.Model()) {
+                try
+                {
+                    web_loja_dal.PRODUTO prod = ctx.PRODUTO.Where(p => p.ID == id).Single();
+                    return View(prod);
+                } catch (Exception ex)
+                {
+                    Console.Write("Erro ao consultar pelo ID: " + id);
+                    return View("Error");
+                }
+            }            
         }
 
         // GET
@@ -42,7 +52,11 @@ namespace web_loja_app.Controllers
         {
             try
             {
-                return RedirectToAction("Produto");
+                using (var ctx = new web_loja_dal.Model())
+                {
+                    web_loja_dal.PRODUTO prod = new web_loja_dal.PRODUTO();                    
+                    return View();
+                }                 
             } catch
             {
                 return View();

@@ -163,6 +163,7 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="Controllers\testeProdutoController.cs" />
     <Compile Include="Controllers\VendaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -218,11 +219,17 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Cliente\Cliente.cshtml" />
-    <Content Include="Views\Produto\Produto.cshtml" />
+    <Content Include="Views\Produto\ProdutoInsert.cshtml" />
     <Content Include="Views\Venda\Venda.cshtml" />
-    <Content Include="Views\Produto\DetailProduto.cshtml" />
     <Content Include="Views\Cliente\ClienteDetail.cshtml" />
     <Content Include="Views\Cesta\DetailCesta.cshtml" />
+    <Content Include="Views\testeProduto\Create.cshtml" />
+    <Content Include="Views\testeProduto\Delete.cshtml" />
+    <Content Include="Views\testeProduto\Details.cshtml" />
+    <Content Include="Views\testeProduto\Edit.cshtml" />
+    <Content Include="Views\testeProduto\Index.cshtml" />
+    <Content Include="Views\Produto\ProdutoList.cshtml" />
+    <Content Include="Views\Produto\ProdutoDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

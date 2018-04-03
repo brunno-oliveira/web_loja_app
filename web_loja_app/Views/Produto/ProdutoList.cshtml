@@ -1,9 +1,5 @@
 ﻿@model IEnumerable<web_loja_dal.PRODUTO>
 
-@{
-    Layout = null;
-}
-
 <!DOCTYPE html>
 
 <html>
@@ -13,7 +9,7 @@
 </head>
 <body>
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "ProdutoEdit")
     </p>
     <table class="table">
         <tr>
@@ -65,9 +61,9 @@
                 @Html.DisplayFor(modelItem => item.DATA_ATUALIZACAO)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+                @Html.ActionLink("Edit", "ProdutoEdit", new { id=item.ID }) |
+                @Html.ActionLink("Detail", "ProdutoDetail", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "ProdutoDelete", new { id=item.ID })
             </td>
         </tr>
     }

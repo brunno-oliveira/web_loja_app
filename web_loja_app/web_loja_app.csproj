@@ -163,14 +163,10 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
-    <Compile Include="Controllers\testeProdutoController.cs" />
     <Compile Include="Controllers\VendaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Cliente.cs" />
-    <Compile Include="Models\Produto.cs" />
-    <Compile Include="Models\Venda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -219,20 +215,16 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Cliente\Cliente.cshtml" />
-    <Content Include="Views\Produto\ProdutoInsert.cshtml" />
+    <Content Include="Views\Produto\ProdutoEdit.cshtml" />
     <Content Include="Views\Venda\Venda.cshtml" />
     <Content Include="Views\Cliente\ClienteDetail.cshtml" />
     <Content Include="Views\Cesta\DetailCesta.cshtml" />
-    <Content Include="Views\testeProduto\Create.cshtml" />
-    <Content Include="Views\testeProduto\Delete.cshtml" />
-    <Content Include="Views\testeProduto\Details.cshtml" />
-    <Content Include="Views\testeProduto\Edit.cshtml" />
-    <Content Include="Views\testeProduto\Index.cshtml" />
     <Content Include="Views\Produto\ProdutoList.cshtml" />
     <Content Include="Views\Produto\ProdutoDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

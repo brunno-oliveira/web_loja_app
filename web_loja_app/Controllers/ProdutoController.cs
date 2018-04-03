@@ -1,34 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using web_loja_app.Models;
-
+using web_loja_dal.DAO;
 
 namespace web_loja_app.Controllers
 {
     public class ProdutoController : Controller
     {
         // GET: Produto
-        public ActionResult Produto()
+        public ActionResult ProdutoList()
         {
             using (var ctx = new web_loja_dal.Model())
-            {
-                List<web_loja_dal.PRODUTO> listProd = (from d in ctx.PRODUTO select d).ToList<web_loja_dal.PRODUTO>();
-                Console.WriteLine(listProd);
-            }            
-                return View();
+            {                               
+                return View(new ProdutoDAO().list());                
+            }                           
         }
 
         // GET
-        public ActionResult ProdutoDetail(int id)
+        public ActionResult ProdutoDetail(int? id)
         {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
             using (var ctx = new web_loja_dal.Model()) {
                 try
                 {
-                    web_loja_dal.PRODUTO prod = ctx.PRODUTO.Where(p => p.ID == id).Single();
-                    return View(prod);
+                    return View(new ProdutoDAO().getById((int)id));                    
                 } catch (Exception ex)
                 {
                     Console.Write("Erro ao consultar pelo ID: " + id);
@@ -36,27 +34,21 @@ namespace web_loja_app.Controllers
                 }
             }            
         }
-
+        
         // GET
-        public ActionResult Create()
+        public ActionResult ProdutoEdit()
         {
-            Produto produto = new Produto();
-            produto.nome = "joao";
-            produto.id = 999;
-            return View("Produto", produto);
+            return View("ProdutoEdit");
         }
 
         // POST
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult ProdutoCreate(web_loja_dal.PRODUTO produto)
         {
             try
             {
-                using (var ctx = new web_loja_dal.Model())
-                {
-                    web_loja_dal.PRODUTO prod = new web_loja_dal.PRODUTO();                    
-                    return View();
-                }                 
+                new ProdutoDAO().insert(produto);
+                return View();
             } catch
             {
                 return View();

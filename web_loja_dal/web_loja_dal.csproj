@@ -49,14 +49,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CESTA.cs" />
-    <Compile Include="CESTA_ITEM.cs" />
-    <Compile Include="CLIENTE.cs" />
-    <Compile Include="Model.cs" />
-    <Compile Include="PRODUTO.cs" />
+    <Compile Include="DAO\ProdutoDAO.cs" />
+    <Compile Include="Models\CESTA.cs" />
+    <Compile Include="Models\CESTA_ITEM.cs" />
+    <Compile Include="Models\CLIENTE.cs" />
+    <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\PRODUTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VENDA.cs" />
-    <Compile Include="VENDA_ITEM.cs" />
+    <Compile Include="Models\VENDA.cs" />
+    <Compile Include="Models\VENDA_ITEM.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,4 +1,4 @@
-namespace web_loja_dal
+namespace web_loja_dal.Models
 {
     using System;
     using System.Data.Entity;
@@ -8,7 +8,7 @@ namespace web_loja_dal
     public partial class Model : DbContext
     {
         public Model()
-            : base("name=connEstoque")
+            : base("name=ModelLocal")
         {
         }
 

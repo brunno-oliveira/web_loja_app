@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
+using web_loja_dal.Models;
 using web_loja_dal.DAO;
 
 namespace web_loja_app.Controllers
@@ -10,7 +11,7 @@ namespace web_loja_app.Controllers
         // GET: Produto
         public ActionResult ProdutoList()
         {
-            using (var ctx = new web_loja_dal.Model())
+            using (var ctx = new Model())
             {                               
                 return View(new ProdutoDAO().list());                
             }                           
@@ -23,7 +24,7 @@ namespace web_loja_app.Controllers
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
             }
-            using (var ctx = new web_loja_dal.Model()) {
+            using (var ctx = new Model()) {
                 try
                 {
                     return View(new ProdutoDAO().getById((int)id));                    
@@ -43,7 +44,7 @@ namespace web_loja_app.Controllers
 
         // POST
         [HttpPost]
-        public ActionResult ProdutoCreate(web_loja_dal.PRODUTO produto)
+        public ActionResult ProdutoCreate(PRODUTO produto)
         {
             try
             {

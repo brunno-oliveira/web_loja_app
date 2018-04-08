@@ -7,16 +7,15 @@ using web_loja_dal.Models;
 
 namespace web_loja_dal.DAO
 {
-    public class ProdutoDAO
+    class ClienteDAO
     {
-        public List<PRODUTO> list()
+        public List<CLIENTE> list()
         {
             using (var db = new Model())
             {
                 try
-                {
-                    List<PRODUTO> teste = db.PRODUTO.ToList();
-                    return db.PRODUTO.ToList();
+                {                    
+                    return db.CLIENTE.ToList();
                 }
                 catch (Exception ex)
                 {
@@ -26,13 +25,13 @@ namespace web_loja_dal.DAO
             }
         }
 
-        public PRODUTO getById(int id)
+        public CLIENTE getById(int id)
         {
-            using(var db = new Model())
+            using (var db = new Model())
             {
                 try
                 {
-                    return db.PRODUTO.Find(id);
+                    return db.CLIENTE.Find(id);
                 }
                 catch (Exception ex)
                 {
@@ -41,57 +40,51 @@ namespace web_loja_dal.DAO
                 }
             }
         }
-        
-        public Boolean insert(PRODUTO produto)
-        {
-            using (var db = new Model())
-            {
-                try
-                {
-                    db.PRODUTO.Attach(produto);
-                    db.SaveChanges();
-                    return true;
-                } catch (Exception ex)
-                {
-                    Console.WriteLine("Erro ao inserir Produto!: " + ex);
-                    return false;
-                }
-            }
-        }
 
-        public Boolean update(PRODUTO produto)
+        public void insert(CLIENTE cliente)
         {
             using (var db = new Model())
             {
                 try
                 {
-                    db.PRODUTO.Add(produto);
-                    db.Entry(produto).State = System.Data.Entity.EntityState.Modified;                    
+                    db.CLIENTE.Attach(cliente);
                     db.SaveChanges();
-                    return true;
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Erro ao inserir Produto!: " + ex);
-                    return false;
                 }
             }
         }
 
-        public Boolean remove(PRODUTO produto)
+        public void update(CLIENTE cliente)
         {
             using (var db = new Model())
             {
                 try
                 {
-                    db.PRODUTO.Remove(db.PRODUTO.Find(produto.ID));
+                    db.CLIENTE.Add(cliente);
+                    db.Entry(cliente).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
-                    return true;
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Erro ao inserir Produto!: " + ex);
-                    return false;
+                }
+            }
+        }
+
+        public void remove(CLIENTE cliente)
+        {
+            using (var db = new Model())
+            {
+                try {                 
+                    db.CLIENTE.Remove(db.CLIENTE.Find(cliente.ID));
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Erro ao inserir Produto!: " + ex);
                 }
             }
         }

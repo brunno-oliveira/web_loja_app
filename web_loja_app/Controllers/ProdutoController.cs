@@ -1,19 +1,18 @@
 ﻿using System;
-using System.Linq;
 using System.Web.Mvc;
 using web_loja_dal.Models;
-using web_loja_dal.DAO;
+using web_loja_bll.Service;
 
 namespace web_loja_app.Controllers
 {
     public class ProdutoController : Controller
     {
         // GET: Produto
-        public ActionResult ProdutoList()
-        {
+        public ActionResult ProdutoList()        {
+            
             using (var ctx = new Model())
             {                               
-                return View(new ProdutoDAO().list());                
+                return View(new ProdutoService().list());                
             }                           
         }
 
@@ -27,7 +26,7 @@ namespace web_loja_app.Controllers
             using (var ctx = new Model()) {
                 try
                 {
-                    return View(new ProdutoDAO().getById((int)id));                    
+                    return View(new ProdutoService().getById((int)id));                    
                 } catch (Exception ex)
                 {
                     Console.Write("Erro ao consultar pelo ID: " + id);
@@ -48,7 +47,7 @@ namespace web_loja_app.Controllers
         {
             try
             {
-                new ProdutoDAO().insert(produto);
+                new ProdutoService().insert(produto);
                 return View();
             } catch
             {

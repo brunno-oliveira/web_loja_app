@@ -160,6 +160,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CestaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
@@ -170,14 +171,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Start\Content\bootstrap-theme.css" />
+    <Content Include="App_Start\Content\bootstrap-theme.min.css" />
+    <Content Include="App_Start\Content\bootstrap.css" />
+    <Content Include="App_Start\Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="App_Start\Content\Site.css" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -185,10 +191,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="App_Start\Content\bootstrap.min.css.map" />
+    <Content Include="App_Start\Content\bootstrap.css.map" />
+    <Content Include="App_Start\Content\bootstrap-theme.min.css.map" />
+    <Content Include="App_Start\Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -237,6 +247,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\web_loja_bll\web_loja_bll.csproj">
+      <Project>{363155f7-5d49-424e-8436-a59b81e1098f}</Project>
+      <Name>web_loja_bll</Name>
+    </ProjectReference>
     <ProjectReference Include="..\web_loja_dal\web_loja_dal.csproj">
       <Project>{b04aef47-7326-4577-b644-a630121ef05d}</Project>
       <Name>web_loja_dal</Name>

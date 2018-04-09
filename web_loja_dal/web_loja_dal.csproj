@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="DAO\CestaDAO.cs" />
     <Compile Include="DAO\ClienteDAO.cs" />
+    <Compile Include="DAO\IDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="Models\CESTA.cs" />
     <Compile Include="Models\CESTA_ITEM.cs" />

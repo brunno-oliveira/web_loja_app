@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using web_loja_dal.Models;
 
 namespace web_loja_dal.DAO
 {
-    class ClienteDAO
+    public class ClienteDAO : IDAO<CLIENTE>
     {
         public List<CLIENTE> list()
         {
@@ -41,7 +39,7 @@ namespace web_loja_dal.DAO
             }
         }
 
-        public void insert(CLIENTE cliente)
+        public Boolean insert(CLIENTE cliente)
         {
             using (var db = new Model())
             {
@@ -49,15 +47,17 @@ namespace web_loja_dal.DAO
                 {
                     db.CLIENTE.Attach(cliente);
                     db.SaveChanges();
+                    return true;
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Erro ao inserir Produto!: " + ex);
+                    return false;
                 }
             }
         }
 
-        public void update(CLIENTE cliente)
+        public Boolean update(CLIENTE cliente)
         {
             using (var db = new Model())
             {
@@ -66,25 +66,29 @@ namespace web_loja_dal.DAO
                     db.CLIENTE.Add(cliente);
                     db.Entry(cliente).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
+                    return true;
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Erro ao inserir Produto!: " + ex);
+                    return false;
                 }
             }
         }
 
-        public void remove(CLIENTE cliente)
+        public Boolean remove(CLIENTE cliente)
         {
             using (var db = new Model())
             {
                 try {                 
                     db.CLIENTE.Remove(db.CLIENTE.Find(cliente.ID));
                     db.SaveChanges();
+                    return true;
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Erro ao inserir Produto!: " + ex);
+                    return false;
                 }
             }
         }

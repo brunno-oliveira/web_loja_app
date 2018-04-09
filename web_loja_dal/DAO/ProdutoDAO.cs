@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using web_loja_dal.Models;
 
 namespace web_loja_dal.DAO
 {
-    public class ProdutoDAO
+    public class ProdutoDAO : IDAO<PRODUTO>
     {
         public List<PRODUTO> list()
         {
@@ -15,8 +13,7 @@ namespace web_loja_dal.DAO
             {
                 try
                 {
-                    List<PRODUTO> teste = db.PRODUTO.ToList();
-                    return db.PRODUTO.ToList();
+                    return db.PRODUTO.ToList();                    
                 }
                 catch (Exception ex)
                 {

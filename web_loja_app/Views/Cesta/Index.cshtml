@@ -1,0 +1,51 @@
+﻿@model IEnumerable<web_loja_dal.Models.CESTA_ITEM>
+
+@{
+    ViewBag.Title = "Cesta";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cesta</title>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PRODUTO.NOME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PRODUTO.MARCA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PRODUTO.VALOR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QUANTIDADE)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRODUTO.NOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRODUTO.MARCA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRODUTO.VALOR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QUANTIDADE)
+            </td>
+            <td>
+                @Html.ActionLink("Adicionar", "CestaAdicionar", new { id = item.ID })
+            </td>
+        </tr>
+        }
+    </table>
+</body>
+</html>

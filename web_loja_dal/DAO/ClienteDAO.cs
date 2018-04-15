@@ -76,12 +76,12 @@ namespace web_loja_dal.DAO
             }
         }
 
-        public Boolean remove(CLIENTE cliente)
+        public Boolean remove(int id)
         {
             using (var db = new Model())
             {
                 try {                 
-                    db.CLIENTE.Remove(db.CLIENTE.Find(cliente.ID));
+                    db.CLIENTE.Remove(db.CLIENTE.Find(id));
                     db.SaveChanges();
                     return true;
                 }

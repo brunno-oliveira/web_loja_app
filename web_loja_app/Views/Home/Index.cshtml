@@ -37,7 +37,7 @@
                     @Html.DisplayFor(modelItem => item.VALOR)
                 </td>
                 <td>
-                    @Html.ActionLink("Adicionar", "CestaAdicionar", new { id = item.ID })                    
+                    @Html.ActionLink("Adicionar", "AddItem", "CestaController", new { item.ID}, "")                    
                 </td>
             </tr>
         }

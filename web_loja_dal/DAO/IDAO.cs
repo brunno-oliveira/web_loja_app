@@ -16,6 +16,6 @@ namespace web_loja_dal.DAO
 
         Boolean update(T t);
 
-        Boolean remove(T t);
+        Boolean remove(int id);
     }
 }

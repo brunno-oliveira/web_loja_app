@@ -8,7 +8,7 @@ namespace web_loja_app.Controllers
     public class ProdutoController : Controller
     {
         // GET: Produto
-        public ActionResult ProdutoList()        {
+        public ActionResult ProdutoList(){
             
             using (var ctx = new Model())
             {                               
@@ -34,25 +34,51 @@ namespace web_loja_app.Controllers
                 }
             }            
         }
-        
-        // GET
-        public ActionResult ProdutoEdit()
+
+        // GET Produto/ProdutoEdit/{Produto ID}
+        public ActionResult ProdutoEdit(int? id)
         {
-            return View("ProdutoEdit");
+            if (id == null)
+            {
+                return View("ProdutoEdit");
+            }
+            else
+            {
+                return View("ProdutoEdit", new ProdutoService().getById((int)id));
+            }
         }
 
-        // POST
+        // POST Produto/ProdutoEdit
         [HttpPost]
-        public ActionResult ProdutoCreate(PRODUTO produto)
-        {
+        public ActionResult ProdutoEdit(PRODUTO produto){
             try
             {
-                new ProdutoService().insert(produto);
+                if (produto.ID != null)
+                {
+                    new ProdutoService().update(produto);
+                } else
+                {
+                    produto.DATA_CRIACAO = DateTime.Now;
+                    produto.ATIVO = 1;
+                    new ProdutoService().insert(produto);                    
+                }
                 return View();
-            } catch
+            }
+            catch
             {
                 return View();
-            }            
-        }        
+            }
+        }
+        
+        public ActionResult ProdutoDelete(int? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
+
+            new ProdutoService().remove((int)id);
+            return View();
+        }
     }
 }

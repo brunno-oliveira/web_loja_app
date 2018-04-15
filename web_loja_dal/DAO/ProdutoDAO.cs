@@ -45,7 +45,7 @@ namespace web_loja_dal.DAO
             {
                 try
                 {
-                    db.PRODUTO.Attach(produto);
+                    db.PRODUTO.Add(produto);                
                     db.SaveChanges();
                     return true;
                 } catch (Exception ex)
@@ -55,15 +55,19 @@ namespace web_loja_dal.DAO
                 }
             }
         }
-
+        
         public Boolean update(PRODUTO produto)
         {
             using (var db = new Model())
             {
                 try
                 {
-                    db.PRODUTO.Add(produto);
-                    db.Entry(produto).State = System.Data.Entity.EntityState.Modified;                    
+                    db.PRODUTO.Attach(produto);
+                    var entry = db.Entry(produto);
+                    entry.Property(e => e.NOME).IsModified = true;
+                    entry.Property(e => e.MARCA).IsModified = true;
+                    entry.Property(e => e.QUANTIDADE).IsModified = true;
+                    entry.Property(e => e.VALOR).IsModified = true;
                     db.SaveChanges();
                     return true;
                 }
@@ -75,13 +79,13 @@ namespace web_loja_dal.DAO
             }
         }
 
-        public Boolean remove(PRODUTO produto)
+        public Boolean remove(int id)
         {
             using (var db = new Model())
             {
                 try
                 {
-                    db.PRODUTO.Remove(db.PRODUTO.Find(produto.ID));
+                    db.PRODUTO.Remove(db.PRODUTO.Find(id));
                     db.SaveChanges();
                     return true;
                 }

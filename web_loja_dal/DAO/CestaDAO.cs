@@ -59,13 +59,13 @@ namespace web_loja_dal.DAO
             }
         }
 
-        public bool remove(CESTA t)
+        public bool remove(int id)
         {
             using (var db = new Model())
             {
                 try
                 {
-                    db.CESTA.Remove(db.CESTA.Find(t.ID));
+                    db.CESTA.Remove(db.CESTA.Find(id));
                     db.SaveChanges();
                     return true;
                 }

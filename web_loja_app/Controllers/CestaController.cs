@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using web_loja_bll.Service;
+using web_loja_dal.Models;
 
 namespace web_loja_app.Controllers
 {
@@ -13,28 +15,20 @@ namespace web_loja_app.Controllers
         {
             return View();
         }
-
-        // GET: Cesta/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
+        
         // GET: Cesta/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Cesta/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        // GET: Cesta/AddItem/?produtoId={}&quantidade={}
+        public ActionResult AddItem(int produtoId, int quantidade)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                CESTA_ITEM cesta_item = new CESTA_ITEM();
+                return View(new CestaService().AddItem(cesta_item));
             }
             catch
             {

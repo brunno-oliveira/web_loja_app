@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text;
 using web_loja_dal.DAO;
@@ -30,9 +31,9 @@ namespace web_loja_bll.Service
             return dao.update(produto);
         }
         
-          public Boolean remove(PRODUTO produto)
+          public Boolean remove(int id)
         {
-            return dao.remove(produto);
+            return dao.remove(id);
         }
     }
 }

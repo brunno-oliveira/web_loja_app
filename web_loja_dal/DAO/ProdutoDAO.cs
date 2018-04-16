@@ -64,7 +64,7 @@ namespace web_loja_dal.DAO
                 {
                     db.PRODUTO.Attach(produto);
                     var entry = db.Entry(produto);
-                    entry.Property(e => e.NOME).IsModified = true;
+                    entry.Property(e => e.NOME).IsModified = true; //teste
                     entry.Property(e => e.MARCA).IsModified = true;
                     entry.Property(e => e.QUANTIDADE).IsModified = true;
                     entry.Property(e => e.VALOR).IsModified = true;

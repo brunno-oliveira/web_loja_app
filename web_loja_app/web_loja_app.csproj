@@ -163,7 +163,7 @@
     <Compile Include="Controllers\CestaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="Controllers\EstoqueController.cs" />
     <Compile Include="Controllers\VendaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -225,12 +225,12 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Cliente\Cliente.cshtml" />
-    <Content Include="Views\Produto\ProdutoEdit.cshtml" />
+    <Content Include="Views\Estoque\EstoqueEdit.cshtml" />
     <Content Include="Views\Venda\Venda.cshtml" />
     <Content Include="Views\Cliente\ClienteDetail.cshtml" />
     <Content Include="Views\Cesta\DetailCesta.cshtml" />
-    <Content Include="Views\Produto\ProdutoList.cshtml" />
-    <Content Include="Views\Produto\ProdutoDetail.cshtml" />
+    <Content Include="Views\Estoque\EstoqueList.cshtml" />
+    <Content Include="Views\Estoque\EstoqueDetail.cshtml" />
     <Content Include="Views\Cesta\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

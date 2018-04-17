@@ -22,8 +22,8 @@ namespace web_loja_app.Controllers
             return View();
         }
 
-        // GET: Cesta/AddItem/?produtoId={}&quantidade={}
-        public ActionResult AddItem(int produtoId, int quantidade)
+        // GET: Cesta/AddItem/10
+        public ActionResult AddItem(String id, String qtd)
         {
             try
             {

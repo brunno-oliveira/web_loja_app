@@ -5,10 +5,10 @@ using web_loja_bll.Service;
 
 namespace web_loja_app.Controllers
 {
-    public class ProdutoController : Controller
+    public class EstoqueController : Controller
     {
         // GET: Produto
-        public ActionResult ProdutoList(){
+        public ActionResult EstoqueList(){
             
             using (var ctx = new Model())
             {                               
@@ -17,7 +17,7 @@ namespace web_loja_app.Controllers
         }
 
         // GET
-        public ActionResult ProdutoDetail(int? id)
+        public ActionResult EstoqueDetail(int? id)
         {
             if(id == null)
             {
@@ -36,33 +36,33 @@ namespace web_loja_app.Controllers
         }
 
         // GET Produto/ProdutoEdit/{Produto ID}
-        public ActionResult ProdutoEdit(int? id)
+        public ActionResult EstoqueEdit(int? id)
         {
             if (id == null)
             {
-                return View("ProdutoEdit");
+                return View("EstoqueEdit");
             }
             else
             {
-                return View("ProdutoEdit", new ProdutoService().getById((int)id));
+                return View("EstoqueEdit", new ProdutoService().getById((int)id));
             }
         }
 
         // POST Produto/ProdutoEdit
         [HttpPost]
-        public ActionResult ProdutoEdit(PRODUTO produto){
+        public ActionResult EstoqueEdit(PRODUTO produto){
             try
             {
-                if (produto.ID != null)
+                if (produto.ID != 0)
                 {
-                    new ProdutoService().update(produto);
+                    new ProdutoService().update(produto);                    
                 } else
                 {
                     produto.DATA_CRIACAO = DateTime.Now;
                     produto.ATIVO = 1;
                     new ProdutoService().insert(produto);                    
                 }
-                return View();
+                return View(produto);
             }
             catch
             {
@@ -70,7 +70,7 @@ namespace web_loja_app.Controllers
             }
         }
         
-        public ActionResult ProdutoDelete(int? id)
+        public ActionResult EstoqueDelete(int? id)
         {
             if(id == null)
             {

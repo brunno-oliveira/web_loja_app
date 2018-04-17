@@ -9,7 +9,7 @@
 </head>
 <body>
     <p>
-        @Html.ActionLink("Create New", "ProdutoEdit")
+        @Html.ActionLink("Create New", "EstoqueEdit")
     </p>
     <table class="table">
         <tr>
@@ -61,9 +61,9 @@
                 @Html.DisplayFor(modelItem => item.DATA_ATUALIZACAO)
             </td>
             <td>
-                @Html.ActionLink("Edit", "ProdutoEdit", new { id=item.ID }) |
-                @Html.ActionLink("Detail", "ProdutoDetail", new { id=item.ID }) |
-                @Html.ActionLink("Delete", "ProdutoDelete", new { id=item.ID })
+                @Html.ActionLink("Edit", "EstoqueEdit", new { id=item.ID }) |
+                @Html.ActionLink("Detail", "EstoqueDetail", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "EstoqueDelete", new { id=item.ID })
             </td>
         </tr>
      }    

@@ -62,7 +62,7 @@ namespace web_loja_app.Controllers
                     produto.ATIVO = 1;
                     new ProdutoService().insert(produto);                    
                 }
-                return View(produto);
+                return View("EstoqueDetail", produto);
             }
             catch
             {
@@ -78,7 +78,7 @@ namespace web_loja_app.Controllers
             }
 
             new ProdutoService().remove((int)id);
-            return View();
+            return View("EstoqueList", new ProdutoService().list());
         }
     }
 }
